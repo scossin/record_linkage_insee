@@ -1,0 +1,61 @@
+R version 4.0.3 (2020-10-10)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 18.04.5 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.7.1
+LAPACK: /home/cossins/anaconda3/lib/libmkl_rt.so
+
+locale:
+ [1] LC_CTYPE=fr_FR.UTF-8          LC_NUMERIC=C                 
+ [3] LC_TIME=fr_FR.UTF-8           LC_COLLATE=fr_FR.UTF-8       
+ [5] LC_MONETARY=fr_FR.UTF-8       LC_MESSAGES=fr_FR.UTF-8      
+ [7] LC_PAPER=fr_FR.UTF-8          LC_NAME=fr_FR.UTF-8          
+ [9] LC_ADDRESS=fr_FR.UTF-8        LC_TELEPHONE=fr_FR.UTF-8     
+[11] LC_MEASUREMENT=fr_FR.UTF-8    LC_IDENTIFICATION=fr_FR.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] keras_2.3.0.0       randomForest_4.6-14
+
+loaded via a namespace (and not attached):
+  [1] colorspace_1.4-1     rjson_0.2.20         ellipsis_0.3.1      
+  [4] class_7.3-17         base64enc_0.1-3      httpcode_0.3.0      
+  [7] rstudioapi_0.11      fansi_0.4.1          prodlim_2019.11.13  
+ [10] lubridate_1.7.9      xml2_1.3.2           codetools_0.2-16    
+ [13] splines_4.0.3        elastic_1.1.0        knitr_1.29          
+ [16] zeallot_0.1.0        jsonlite_1.7.0       pROC_1.16.2         
+ [19] caret_6.0-86         rJava_0.9-13         tfruns_1.4          
+ [22] shiny_1.5.0          readr_1.3.1          compiler_4.0.3      
+ [25] httr_1.4.2           assertthat_0.2.1     Matrix_1.2-18       
+ [28] fastmap_1.0.1        lazyeval_0.2.2       cli_2.0.2           
+ [31] later_1.1.0.1        htmltools_0.5.0      tools_4.0.3         
+ [34] gtable_0.3.0         glue_1.4.1           reshape2_1.4.4      
+ [37] dplyr_1.0.2          rappdirs_0.3.1       tinytex_0.25        
+ [40] Rcpp_1.0.5           vctrs_0.3.2          RJSONIO_1.3-1.4     
+ [43] crul_1.0.0           nlme_3.1-149         iterators_1.0.12    
+ [46] SPARQL_1.16          timeDate_3043.102    gower_0.2.2         
+ [49] xfun_0.16            stringr_1.4.0        xlsxjars_0.6.1      
+ [52] testthat_2.3.2       rvest_0.3.6          mime_0.9            
+ [55] lifecycle_0.2.0      stringdist_0.9.6     xlsx_0.6.3          
+ [58] MASS_7.3-53          scales_1.1.1         ipred_0.9-9         
+ [61] hms_0.5.3            promises_1.1.1       parallel_4.0.3      
+ [64] tidyjson_0.3.1       yaml_2.2.1           curl_4.3            
+ [67] reticulate_1.16      ggplot2_3.3.2        rpart_4.1-15        
+ [70] stringi_1.4.6        tensorflow_2.2.0     foreach_1.5.0       
+ [73] lava_1.6.7           echarts4r_0.3.2      rlang_0.4.7         
+ [76] pkgconfig_2.0.3      evaluate_0.14        lattice_0.20-41     
+ [79] purrr_0.3.4          recipes_0.1.13       htmlwidgets_1.5.1   
+ [82] tidyselect_1.1.0     plyr_1.8.6           magrittr_1.5        
+ [85] R6_2.4.1             magick_2.4.0         generics_0.0.2      
+ [88] DBI_1.1.0            pillar_1.4.6         whisker_0.4         
+ [91] withr_2.2.0          kerastuneR_0.1.0.3   survival_3.2-7      
+ [94] i2b2bordeaux_1.5.1   nnet_7.3-14          tibble_3.0.3        
+ [97] crayon_1.3.4         plotly_4.9.2.1       rmarkdown_2.3       
+[100] RJDBC_0.2-8          grid_4.0.3           data.table_1.13.3   
+[103] ModelMetrics_1.2.2.2 digest_0.6.25        webshot_0.5.2       
+[106] xtable_1.8-4         tidyr_1.1.1          httpuv_1.5.4        
+[109] stats4_4.0.3         munsell_0.5.0        viridisLite_0.3.0   
+[112] kableExtra_1.1.0
