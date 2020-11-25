@@ -1,0 +1,53 @@
+{
+    "query": {
+        "bool": {
+            "should": [
+                {
+                    "match": {
+                        "nom": "${nom}"
+                    }
+                },
+                {
+                    "match": {
+                        "prenom": "${prenom}"
+                    }
+                },
+                {
+                    "match": {
+                        "sexe": "${sexe}"
+                    }
+                },
+                {
+                    "match": {
+                        "annee_naissance_str": "${annee_naissance}"
+                    }
+                },
+                {
+                    "match": {
+                        "mois_naissance_str": "${mois_naissance_str}"
+                    }
+                },
+                {
+                    "match": {
+                        "jour_naissance_str": "${jour_naissance_str}"
+                    }
+                },
+                {
+                    "match": {
+                        "date_naissance_str": "${date_naissance}"
+                    }
+                },
+                {
+                    "match": {
+                        "departement_naissance": "${departement_naissance}"
+                    }
+                },
+                {
+                    "match": {
+                        "pays_naissance": "${pays_naissance}"
+                    }
+                }
+            ]
+        }
+    }
+}
