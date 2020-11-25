@@ -1,4 +1,4 @@
-# Apply the all pipeline to each hospital record
+# Apply the all pipeline to each hospital record
 
 ## Prepare visits
 INSEE_DECES_SEJOUR.sql: a table we create to have the LAST_VISIT_DATE for every patient
