@@ -1,0 +1,95 @@
+{
+    "settings": {
+        "number_of_shards": 5,
+        "number_of_replicas": 1
+    },
+    "mappings": {
+        "dynamic": false,
+        "properties": {
+            "nom": {
+                "type": "text",
+                "analyzer": "whitespace"
+            },
+            "prenom": {
+                "type": "text",
+                "analyzer": "whitespace"
+            },
+            "prenom1": {
+                "type": "text",
+                "analyzer": "whitespace"
+            },
+            "prenom2": {
+                "type": "text",
+                "analyzer": "whitespace"
+            },
+            "prenom3": {
+                "type": "text",
+                "analyzer": "whitespace"
+            },
+            "sexe": {
+                "type": "keyword"
+            },
+            "date_naissance": {
+                "type": "date"
+            },
+            "date_naissance_str": {
+                "type": "keyword"
+            },
+            "annee_naissance": {
+                "type": "short"
+            },
+            "annee_naissance_str": {
+                "type": "keyword"
+            },
+            "mois_naissance": {
+                "type": "short"
+            },
+            "mois_naissance_str": {
+                "type": "keyword"
+            },
+            "jour_naissance": {
+                "type": "short"
+            },
+            "jour_naissance_str": {
+                "type": "keyword"
+            },
+            "code_lieu_naissance": {
+                "type": "text",
+                "analyzer": "whitespace"
+            },
+            "departement_naissance": {
+                "type": "keyword"
+            },
+            "lieu_naissance": {
+                "type": "text",
+                "analyzer": "whitespace"
+            },
+            "pays_naissance": {
+                "type": "text",
+                "analyzer": "whitespace"
+            },
+            "date_deces": {
+                "type": "date"
+            },
+            "annee_deces": {
+                "type": "short"
+            },
+            "mois_deces": {
+                "type": "short"
+            },
+            "jour_deces": {
+                "type": "short"
+            },
+            "code_lieu_deces": {
+                "type": "keyword"
+            },
+            "departement_deces": {
+                "type": "keyword"
+            },
+            "numero_acte_deces": {
+                "type": "text",
+                "index": false
+            }
+        }
+    }
+}
