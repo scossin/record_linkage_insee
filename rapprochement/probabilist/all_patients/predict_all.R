@@ -42,7 +42,6 @@ library(randomForest)
 source("./loadDepartement.R") # French region/department link 
 source("./loadCounts.R") #  frequency count of first_name and last_name
 source("./loadCodePostaux.R")
-source("./2019/classifyRecords.R")
 source("./machine_learning/normalize_set.R")
 ### function and ES configuration:
 source("functions.R") #   
