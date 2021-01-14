@@ -1,3 +1,10 @@
+## Follow the instructions in the INSEE_DECES.sql file: 
+# DROP the table before update
+# Create the table
+# use this script to load CSV files
+# alter table
+# create indices
+
 ### load INSEE data in INFOPAT
 httr::set_config(httr::config(ssl_verifypeer = 0L))
 conn <- i2b2bordeaux::getI2B2con()
@@ -66,11 +73,3 @@ for (csv_file in csv_files){
   log_info("it took ",difftime(timeEnd,timeStart,units = "mins"), " minutes to load in Oracle file: ", csv_file)
 }  
 
-## doesn't work in R, need to do it manually:  
-update_stat <- "ALTER TABLE IAM.INSEE_DECES 
-  ADD (DATE_DECES GENERATED ALWAYS AS (to_date(DATE_DECES_STR, 'YYYY-MM-DD HH24:MI:SS')));"
-RJDBC::dbSendQuery(conn = conn, statement = update_stat)
-"ALTER TABLE IAM.INSEE_DECES 
-  ADD (DATE_NAISSANCE GENERATED ALWAYS AS (to_date(DATE_NAISSANCE_STR, 'YYYY-MM-DD HH24:MI:SS')));"
-
-## don't forget to create the indices ! Cf INSEE_DECES.sql
