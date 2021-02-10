@@ -15,7 +15,7 @@ if [[ -d $FOLDER ]]; then
 	    filerelative="$FOLDER/$file"
         response=$(curl -s -X POST "localhost:9200/_bulk" -H 'Content-Type: application/json' --data-binary "@$filerelative" 2>&1 | grep \"status\":4)
         if [ ${#response} -ne 0 ]; then # if reponse status begins by 4, log the error 
-            FILENAME_LOG="./logsNDJSON/error_loadNDJSON_"$file"_LOG_"$(date +%Y-%m-%d-%H%M%S.txt)
+            FILENAME_LOG="./error_loadNDJSON_"$file"_LOG_"$(date +%Y-%m-%d-%H%M%S.txt)
             echo $response >> $FILENAME_LOG
         fi
     done

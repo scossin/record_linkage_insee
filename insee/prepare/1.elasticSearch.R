@@ -1,19 +1,30 @@
 ### Prepare files to be index in elasticSearch (NDJSON files)
 library(elastic)
-indexName <- "insee"
 library(logger)
 library(dplyr)
+library(data.table)
+library(stringr)
+indexName <- "insee"
+
+## NDJSON output folder:
+NDJSON_FOLDER <- "./elasticsearch/NDJSON/"
+if (!dir.exists(NDJSON_FOLDER)){
+  dir.create(NDJSON_FOLDER)
+}
+
+## logs:
 filename <- paste0("./logs/",gsub("[ :]","-",Sys.time()), ".txt")
 file.create(filename)
 logger::log_info(INFO)
-log_appender(appender = appender_file(file=filename))
-log_info("starting script elasticSearch...")
+logger::log_appender(appender = appender_file(file=filename))
+logger::log_appender(appender = logger::appender_console,index = 2) # to console
+logger::log_info("starting script elasticSearch...")
 
 ## INSEE txt files
 csv_files <- list.files("./csv",full.names = T,pattern = "csv$")
 csv_file <- csv_files[1] 
 for (csv_file in csv_files){
-  log_info("preparing to index file ", csv_file)
+  logger::log_info("preparing to index file ", csv_file)
   timeStart <- Sys.time() # log the time it takes at the end 
   insee_deces <- data.table::fread(file = csv_file, 
                             header = F, 
@@ -73,5 +84,6 @@ for (csv_file in csv_files){
                           )
   
   timeEnd <- Sys.time()
-  log_info("it took ",difftime(timeEnd,timeStart,units = "mins", "to transform"), " minutes to generate NDJSON for file: ", csv_file)
+  time_diff <- round(difftime(timeEnd,timeStart,units = "mins"),2)
+  logger::log_info("it took ",time_diff, " minutes to generate NDJSON for : ", csv_file)
 } 

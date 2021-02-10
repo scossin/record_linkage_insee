@@ -1,11 +1,19 @@
 ### Load insee txt files, transform them, create CSV file
 library(logger)
 library(dplyr)
-filename <- paste0("./logs/",gsub("[ :]","-",Sys.time()), ".txt")
+library(digest)
+library(reshape2)
+library(data.table)
+log_directory <- "./logs/"
+if (!dir.exists(log_directory)){
+  dir.create(log_directory)
+}
+filename <- paste0(log_directory,gsub("[ :]","-",Sys.time()), ".txt")
 file.create(filename)
 logger::log_info(INFO)
-log_appender(appender = appender_file(file=filename))
-log_info("starting script...")
+logger::log_appender(appender = appender_file(file=filename)) # to file
+logger::log_appender(appender = logger::appender_console,index = 2) # to console
+logger::log_info("starting script...")
 
 ## normalize txt columns:
 source("./normalize_function.R")
@@ -16,17 +24,20 @@ txt_files <- list.files("../download/data/",full.names = T)
 
 # output folder
 output_folder <- "./csv/"
+if (!dir.exists(output_folder)){
+  dir.create(output_folder)
+}
 
 for (txt_file in txt_files){
   
-  log_info("loading filename ", txt_file)
+  logger::log_info("loading filename ", txt_file)
   timeStart <- Sys.time() # log the time it takes at the end 
   
   # CSV output file 
   outputCSVfilename <- paste0(output_folder,stringr::str_extract(txt_file,"[^/]+.txt$"))
   outputCSVfilename <- gsub(".txt",".csv",outputCSVfilename)
   if (file.exists(outputCSVfilename)){
-    log_info("output CSV file already exists ", outputCSVfilename)
+    logger::log_info("output CSV file already exists ", outputCSVfilename)
     next
   } 
   
@@ -137,10 +148,10 @@ for (txt_file in txt_files){
   insee_deces <- insee_deces[,num_columns] 
   
   ## quality control:
-  log_info("\t number of rows:", nrow(insee_deces))
-  log_info("\t  number of NA values in file ", outputCSVfilename)
+  logger::log_info("\t number of rows:", nrow(insee_deces))
+  logger::log_info("\t  number of NA values in file ", outputCSVfilename)
   for (colname in columns){
-    log_info("\t\t  number of NA values in ", colname, ": ", sum(is.na(insee_deces[colname])))
+    logger::log_info("\t\t  number of NA values in ", colname, ": ", sum(is.na(insee_deces[colname])))
   } 
   
   ## write csv with fwrite function (much faster) 
@@ -151,5 +162,6 @@ for (txt_file in txt_files){
                      sep="\t",
                      quote=F)
   timeEnd <- Sys.time()
-  log_info("it took ",difftime(timeEnd,timeStart,units = "mins", "to transform"), "for file: ", txt_file)
+  time_diff <- round(difftime(timeEnd,timeStart,units = "mins"),2)
+  log_info("it took ",time_diff, " minutes to transform", " file: ", txt_file)
 } 
