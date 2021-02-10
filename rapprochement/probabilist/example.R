@@ -1,16 +1,18 @@
 ## load dependencies:
 library(randomForest)
+library(httr) # http request to elasticsearch
+library(jsonlite) # parse elasticsearch response
+library(stringdist) # string distances
 source("./loadDepartement.R") # French region/department link 
 source("./loadCounts.R") #  frequency count of first_name and last_name
 source("./loadCodePostaux.R")
 source("./machine_learning/normalize_set.R")
 ### function and ES configuration:
-source("functions.R") #   
+source("./functions.R") #   
 es_url <- "http://localhost:9200/"
 indexname <- "insee"
 n <- 10 ## number of documents returned by ElasticSearch  
-source("loadModels.R")
-model_rf <- model
+source("./loadModels.R")
 
 ## threshold from 2019 evaluation
 upper_threshold <- 0.95
@@ -36,17 +38,13 @@ recordHospital = list(
   LAST_VISIT_DATE = "2010-11-12" # last visit date  
 )
 
-## transform sql result to new standardized format:
-record <- sqlRowResult_to_record(recordHospital)
-
 # local data quality check:
 if(is.na(recordHospital$SPA_NOM_NAISS)){
   recordHospital$SPA_NOM_NAISS <-  recordHospital$SPA_NOM_USUEL
 } 
+
+## transform sql result to new standardized format:
 record <- sqlRowResult_to_record(recordHospital)
-if (record$sexe == "I"){
-  next
-} 
 
 ## Step1: blocking strategy, search candidate death certificates:
 insee_docs <- esSearchMatch(es_url = es_url,
@@ -64,7 +62,8 @@ length(f_matches) # 40 features
 # deep learning prediction:
 X <- normalize_X(dataset = f_matches,
                  meansSd = meansSd)
-probas_nn <- predict(model_nn,X,type = "prob")
+probas_nn <- predict_nn(X = X,
+                        weights = weights) # weights: neural network pre-trained weights
 
 # random forest prediction: 
 bool <- is.na(f_matches)
@@ -90,7 +89,7 @@ if(any(bool_lower)) {
   insee_docs$probas_nn <- signif(insee_docs$probas_nn, 3)
   insee_docs$probas_rf <- signif(insee_docs$probas_rf, 3)
   insee_docs$upper <- as.numeric(insee_docs$probas_rf > upper_threshold & insee_docs$probas_nn > upper_threshold)
-  print(insee_docs)##  
+  print(insee_docs) ##  
   
   ## save the results :
   
