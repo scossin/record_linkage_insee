@@ -19,7 +19,7 @@ logger::log_info("starting script...")
 source("./normalize_function.R")
 
 ## INSEE txt files
-txt_files <- list.files("../download/data/",full.names = T)
+txt_files <- list.files("../download/data/",full.names = T,pattern = "txt$")
 # txt_file <- txt_files[1] 
 
 # output folder
