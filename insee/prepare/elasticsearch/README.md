@@ -1,6 +1,12 @@
 # ElasticSearch
 
-The first thing to do is to run ElasticSearch. We used Docker swarm to have multiple running containers of ElasticSearch (see below). 
+The first thing to do is to run ElasticSearch.  
+To run a single instance of Elasticsearch: 
+```bash
+docker run -it -d -e discovery.type=single-node --name elasticinsee -p 9200:9200 docker.elastic.co/elasticsearch/elasticsearch-oss:7.6.1
+```
+
+We used Docker swarm to have multiple running containers of ElasticSearch (see below). 
 
 Then create the INSEE index.
 
@@ -76,5 +82,3 @@ sysctl -w vm.max_map_count=262144
 docker network create --driver overlay --attachable elastic
 docker stack deploy --compose-file docker-compose.yml elastic
 ```
-
-
