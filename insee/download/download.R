@@ -9,7 +9,7 @@ files <- stringr::str_extract_all(html, regex)
 files <- unlist(files)
 files <- unique(files)
 files
-## keep only >= 2005
+## keep only >= 2005 because the hospital information system of Bordeaux University Hospital was set up in 2005-2006
 files <- files[36:length(files)] 
 files
 base_url <- "http://data.cquest.org/insee_deces/"
