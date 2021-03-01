@@ -23,14 +23,13 @@ Once the index created, the NDJSON files can be loaded.
 The "../1.elasticSearch.R" is in charge of creating the NDJSON files. 
 
 ```bash
-bash loadNDJSON.sh NDJSON
+bash loadNDJSON.sh NDJSON # expects Elasticsearch to be running at http://127.0.0.1:9200
 ```
 This command will load all files in the NDJSON repository using the ElasticSearch bulk API.  
 If errors occured during the indexing of documents, see logsNDJSON for more information. 
-It takes between 30 minutes and 1 hour to index all the files. 
+It takes about 3 minutes to index 1 year of data.  
 
-Go to http://127.0.0.1:9200/_cat/indices  
-to see the indices and the size of the index. 
+Go to http://localhost:9200/insee/_count to monitor the number of documents being indexed and to http://127.0.0.1:9200/_cat/indices  to see the list of indices and their size. 
 
 
 
