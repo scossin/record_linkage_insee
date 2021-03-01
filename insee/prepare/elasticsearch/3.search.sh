@@ -1,7 +1,7 @@
 #! /bin/bash
 
-### searching a document : 
-echo -e "\n\n ---------- > searching in the document"
+### Test a search query : 
+echo -e "\n\n ---------- > test: searching a death record in the insee index...\n"
 
 curl -X GET "localhost:9200/insee/_search?size=5" -H 'Content-Type: application/json' -d '
 {
