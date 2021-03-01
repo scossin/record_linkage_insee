@@ -22,7 +22,7 @@ This repository contains the source code of the project.
 [![record_linkage_insee_presentation_video](https://img.youtube.com/vi/OSa2yB4JJug/1.jpg)](https://www.youtube.com/watch?v=OSa2yB4JJug)  
 
 ## Citation
-Cossin S, Diouf S, Griffier R, Le Barrois d’Orgeval P, Diallo G, Jouhet V. Linkage of Hospital Records and Death Certificates by a Search Engine and Machine Learning. JAMIA Open. January 1, 2021. doi:10.1093/jamiaopen/ooab005. Available at: https://academic-oup-com.docelec.u-bordeaux.fr/jamiaopen/article/4/1/ooab005/6154710
+Cossin S, Diouf S, Griffier R, Le Barrois d’Orgeval P, Diallo G, Jouhet V. Linkage of Hospital Records and Death Certificates by a Search Engine and Machine Learning. JAMIA Open. January 1, 2021. doi:10.1093/jamiaopen/ooab005. Available at: https://academic.oup.com/jamiaopen/article/4/1/ooab005/6154710
 
 ## Funding
 This study is part of the DRUGS-SAFER research program, funded by the French Medicines Agency (Agence Nationale de Sécurité du Médicament et des Produits de Santé, ANSM). This publication represents the views of the authors and does not necessarily represent the opinion of the French Medicines Agency.
