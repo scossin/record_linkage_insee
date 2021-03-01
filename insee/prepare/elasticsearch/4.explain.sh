@@ -1,7 +1,7 @@
 #! /bin/bash
 
-### searching a document : 
-echo -e "\n\n ---------- > searching in the document"
+### example to have the score explanation between a death record (with its id) and a search query: 
+echo -e "\n\n ---------- > sending an explain query to elasticsearch to understand the calculated score (ouput: tmp.json) \n"
 
 curl -X GET "localhost:9200/insee/_explain/1ff4243a8e45ba154200344d252620fe" -H 'Content-Type: application/json' -d '
 {
